@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { RoomsList } from './components/roomsList';
+import { Assign } from './components/assign';
+import { Info } from './components/info';
+import { create } from 'domain';
+
+
+
 
 function App() {
+  const [status, setStatus] = useState('')
+  const [activatedRooms, setActivatedRooms] = useState([])
+  const handleStatus = (status) => {
+    setStatus(status)
+  }
+
+  const handleActivatedRooms = (e) => {
+    if (activatedRooms.includes(e)) {
+      const filtered = activatedRooms.filter(room => {
+        return room !== e
+      })
+      setActivatedRooms(()=>[...filtered])
+      return
+    }
+    setActivatedRooms(()=>
+      [...activatedRooms, e]
+    )
+
+
+  }
+
+  const resetActiveRooms = () => {
+    setActivatedRooms(()=>[])
+    
+  }
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+
+      <RoomsList handleActivatedRooms={handleActivatedRooms} />
+      <Assign status={handleStatus} activatedRooms={activatedRooms} resetActiveRooms={resetActiveRooms}/>
+     
     </div>
   );
+
+
 }
 
 export default App;

@@ -1,13 +1,159 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.login {
+  position: absolute;
+  z-index: 1;
+  background:grey;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.rooms{
+  display: grid;
+  grid-template-columns: repeat(23, 1fr);
+  margin-bottom: 40px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.room{
+  border:1px green solid;
+  
+  margin:5px;
+  width:70px;
+  height:60px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.activated{
+  border:2px solid rgb(191, 71, 238);
+  opacity: .7;
+}
+.checkout{
+  background:rgb(251, 83, 83);
+}
+
+
+.stayover{
+  background:rgb(246, 180, 57);
+}
+.clean{
+  background:rgb(116, 255, 116);
+  
+}
+
+.info{
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-height: 200px;
+  font-size: 2rem;
+
+}
+
+.info__title{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.info__roomstatus{
+  text-align: center;
+}
+
+.info__roomstatus > ul{
+ list-style-type: none;
+}
+.info__roomstatus--timeago{
+  font-size: 0.75rem;
+  color:grey;
+}
+
+.info__statistics__container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.info__checkroom__container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info__checkroom__room{
+  margin:3px 10px;
+  padding: 2px;
+  border:1px solid rgb(86, 161, 0);
+  cursor: pointer;
+}
+
+.info__statistics__today > ul{
+  font-size: 1.5rem;
+  list-style-type: none;
+}
+
+.info__statistics__current > ul{
+  font-size: 1.5rem;
+  list-style-type: none;
+}
+
+.assign{
+ display: flex;
+ margin-bottom: 20px;
+ font-size: 3rem;
+ padding: 5px;
+ justify-content: space-around
+}
+
+.pinpad{
+  display: flex;
+}
+
+.button_meny{
+  background:rgb(105, 202, 240);
+  cursor: pointer;
+  border-radius: 30%;
+  padding:10px;
+
+}
+.total_selected_rooms{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.pinpad__number{
+  border:1px solid red;
+  margin:5px;
+  padding: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .info{
+    display: block;
+  }
+.info__roomstatus{
+  margin: 10px 0px;
+  background: rgb(238, 237, 237);
+}
+  .info__roomstatus > ul {
+    font-size: 20px;
+  }
+
+  .info__statistics__container{
+    display: block;
+  }
+
+  .rooms{
+    display: grid;
+    justify-items: center;
+    grid-auto-flow:dense;
+    grid-template-columns: repeat(3, 1fr);
+  
+     
+      
+  }
+
+
+  .room{
+   font-size: 16px;
+  }
 }
